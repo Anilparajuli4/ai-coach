@@ -1,0 +1,9 @@
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_bmF0aW9uYWwtamFja2FsLTk3LmNsZXJrLmFjY291bnRzLmRldiQ
+CLERK_SECRET_KEY=sk_test_8gqN1xSpOeJ48t3ixdyyuOUDL0F5FiEybBPMAcA7fA
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL = /sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL = /sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL = /onboarding
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL = /onboarding
+DATABASE_URL = postgresql://anilparajuli:npg_9BQSEw3asIZh@ep-rough-base-a590ipk1-pooler.us-east-2.aws.neon.tech/online-ai-coach?sslmode=require
+GEMINI_API_KEY= AIzaSyA26B9XEciqzNvBFNQaw8VTLZWcWBJdLDs
