@@ -48,7 +48,7 @@ function HeroSection() {
             </div>
             <div className='hero-image-wrapper mt-5 md:mt-0'> 
                 <div ref={imageRef} className='hero-image'>
-                    <Image src='/banner.jpg' width='1280' height={720} alt='Banner Sensai' className='rounded-lg shadow-2xl border mx-auto' priority/>
+                    <Image src='/ai.jpg' width='1280' height={600} alt='Banner Sensai' className='rounded-lg shadow-2xl border mx-auto' priority/>
                 </div>
             </div>
         </div>
