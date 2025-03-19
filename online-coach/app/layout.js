@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 import Footer from "@/components/Footer";
 
 
-const inter = Inter({subsets:["latina"]})
+const inter = Inter({subsets:["latin"]})
 
 export const metadata = {
   title: "Online-coach",
