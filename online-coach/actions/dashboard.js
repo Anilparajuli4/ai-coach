@@ -36,38 +36,69 @@ export const generateAIInsights = async(industry) =>{
 
 }
 
-export async function getIndustryInsights(){
-    const {userId} = await auth()
-    if(!userId){
-        throw new Error('unathorized')
-    }
-    const user = await db.user.findUnique({
-        where:{
-            clerkUserId: userId
-        },
-        include:{
-            industryInsight: true
-        }
-    })
+// export async function getIndustryInsights(){
+//     const {userId} = await auth()
+//     if(!userId){
+//         throw new Error('unathorized')
+//     }
+//     const user = await db.user.findUnique({
+//         where:{
+//             clerkUserId: userId
+//         },
+//         include:{
+//             industryInsight: true
+//         }
+//     })
 
-    if(!user){
-        throw new Error("user not found")
-    }
+//     if(!user){
+//         throw new Error("user not found")
+//     }
 
-    if (!user.industry) {
-      throw new Error("User industry is missing. Please update the user profile with an industry.");
-  }
-if(!user.industryInsight){
-  const insights = await generateAIInsights(user.industry)
-  const industryInsight = await db.industryInsight.create({
-    data:{
-        industry:user.industry,
+//     if (!user.industry) {
+//       throw new Error("User industry is missing. Please update the user profile with an industry.");
+//   }
+// if(!user.industryInsight){
+//   const insights = await generateAIInsights(user.industry)
+//   const industryInsight = await db.industryInsight.create({
+//     data:{
+//         industry:user.industry,
+//         ...insights,
+//         nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+//     }
+//   })
+//   return industryInsight
+// }
+// return user.industryInsight
+
+// }
+
+export async function getIndustryInsights() {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const user = await db.user.findUnique({
+    where: { clerkUserId: userId },
+    include: {
+      industryInsight: true,
+    },
+  });
+
+  if (!user) throw new Error("User not found");
+
+  // If no insights exist, generate them
+  if (!user.industryInsight) {
+    const insights = await generateAIInsights(user.industry);
+
+    const industryInsight = await db.industryInsight.create({
+      data: {
+        industry: user.industry,
         ...insights,
-        nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-    }
-  })
-  return industryInsight
-}
-return user.industryInsight
+        nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      },
+    });
 
+    return industryInsight;
+  }
+
+  return user.industryInsight;
 }
