@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 import DashboardView from './_components/dashboard-view'
 import { getUserOnboardingStatus } from '@/actions/User';
+export const dynamic = 'force-dynamic'
 
 async function IndustryInsightPages() {
   const { isOnboarded } = await getUserOnboardingStatus();
