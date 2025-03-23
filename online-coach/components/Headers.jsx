@@ -17,7 +17,7 @@ async function Headers() {
       
         <div className='text-xl font-bold'>
           <h1>
-           CarrerAI
+           CareerAI
           </h1>
         </div>
       </Link>
